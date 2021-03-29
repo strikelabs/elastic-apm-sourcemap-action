@@ -24,7 +24,7 @@ async function upload(sourcemap) {
     Authorization: `Bearer ${core.getInput("token")}`
   });
 
-  if(response.message.statusCode > 400) {
+  if(response.message.statusCode >= 400) {
     const body = await response.readBody();
     throw Error(`Failed to upload sourcemap ${sourcemap}`, response.statusCode, body);
   }

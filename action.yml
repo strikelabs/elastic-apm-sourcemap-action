@@ -1,4 +1,4 @@
-name: "Publish Elastic APM Sourcemaps"
+name: "Elasticsearch Sourcemap Action"
 description: "Publish sourcemaps to elasticsearch for APM debugging."
 
 inputs:
