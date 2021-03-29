@@ -1,0 +1,30 @@
+name: "Publish Elastic APM Sourcemaps"
+description: "Publish sourcemaps to elasticsearch for APM debugging."
+
+inputs:
+  elastic_node:
+    description: 'Elastic endpoint'
+    required: true
+  service_version:
+    description: 'The service version used in the RUM Agent'
+    required: true
+  service_name:
+    description: 'The service name used in the RUM Agent'
+    required: true
+  sourcemap_build_directory:
+    description: 'Where sourcemaps are bundled to (not included in bundle_url path)'
+    required: true
+  sourcemap_pattern:
+    description: 'Sourcemap pattern match'
+    required: true
+    default: "**/*.map"
+  bundle_url:
+    description: 'Where sourcemaps are deployed to'
+    required: true
+  token:
+    description: 'Your elastic token'
+    required: true
+    
+runs:
+  using: 'node12'
+  main: 'index.js'

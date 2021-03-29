@@ -1,0 +1,13 @@
+{
+  "name": "elastic-sourcemap-action",
+  "version": "1.0.0",
+  "description": "Github action to publish sourcemaps to elastic APM.",
+  "main": "index.js",
+  "author": "finleygn",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/glob": "^0.1.1",
+    "@actions/http-client": "^1.0.11"
+  }
+}
