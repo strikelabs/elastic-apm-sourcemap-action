@@ -1,5 +1,5 @@
 {
-  "name": "elastic-sourcemap-action",
+  "name": "elastic-apm-sourcemap-action",
   "version": "1.0.0",
   "description": "Github action to publish sourcemaps to elastic APM.",
   "main": "index.js",

@@ -1,9 +1,9 @@
-name: "Elasticsearch Sourcemap Action"
-description: "Publish sourcemaps to elasticsearch for APM debugging."
+name: "ElasticAPM Sourcemap Action"
+description: "Publish sourcemaps to APM."
 
 inputs:
-  elastic_node:
-    description: 'Elastic endpoint'
+  apm_node:
+    description: 'Elastic APM endpoint'
     required: true
   service_version:
     description: 'The service version used in the RUM Agent'
