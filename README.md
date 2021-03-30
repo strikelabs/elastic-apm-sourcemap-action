@@ -18,7 +18,7 @@ Save sourcemaps for use with Kibana APM.
 ### `sourcemap_buld_directory`
 **Required** Local directory where sourcemaps are bundled to (`build`, `dist` or similar).
 
-### `sourcemap_patern`
+### `sourcemap_pattern`
 **Required** Sourcemap pattern match. Default `"**/*.map"`.
 
 ### `bundle_url`

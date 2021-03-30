@@ -28,26 +28,42 @@ async function upload(sourcemap) {
   body.append('service_name',    core.getInput('service_name'));
   body.append('bundle_filepath', joinURLPath(core.getInput('bundle_url'), source_path));
 
-  return fetch(
-    joinURLPath(core.getInput('apm_node'), "/assets/v1/sourcemaps"),
-    { 
-      method: "POST",
-      body, 
-      headers: {
-        Authorization: `Bearer ${core.getInput("token")}`
+  core.info(`Uploading map for ${source_path}`);
+
+  try {
+    await fetch(
+      joinURLPath(core.getInput('apm_node'), "/assets/v1/sourcemaps"),
+      { 
+        method: "POST",
+        body, 
+        headers: {
+          Authorization: `Bearer ${core.getInput("token")}`
+        }
       }
-    }
-  );
+    );
+
+    core.info(`Map for ${source_path} uploaded`);
+  } catch(e) {
+    core.error(`Failed to upload map for ${source_path}`);
+    throw Error(e);
+  }
 }
 
 async function run() {
   try {
-    const globber = await glob.create(path.join(
+    const search_path = path.join(
       core.getInput('sourcemap_build_directory'),
-      core.getInput('sourcemaps')
-    ));
+      core.getInput('sourcemap_pattern')
+    );
+
+    const globber = await glob.create(search_path);
+
+    core.info(`Searching in ${search_path}`);
     
     const sourcemaps = await globber.glob();
+
+    core.info(`Found ${sourcemaps.length} sourcemaps`);
+
     const promises = [];
 
     sourcemaps.forEach(map => {
@@ -55,6 +71,8 @@ async function run() {
     });
 
     await Promise.all(promises);
+
+    core.info(`Finished upload of ${promises.length} files`)
   } catch(e) {
     core.setFailed(e);
   }
