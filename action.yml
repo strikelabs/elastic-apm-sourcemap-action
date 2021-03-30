@@ -1,5 +1,8 @@
 name: "ElasticAPM Sourcemap Action"
 description: "Publish sourcemaps to APM."
+branding:
+  icon: 'bar-chart-2'
+  color: 'yellow'
 
 inputs:
   apm_node:
